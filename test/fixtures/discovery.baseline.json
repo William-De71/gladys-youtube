@@ -1,0 +1,339 @@
+{
+  "devices": {
+    "channel": {
+      "external_id": "ext:test-integration:channel:UC_x5XG1OV2P6uZZ5FSM9Ttw",
+      "should_poll": false,
+      "params": ["CHANNEL_ID", "HANDLE", "URL"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:channel:UC_x5XG1OV2P6uZZ5FSM9Ttw:subscribers",
+          "category": "counter-sensor",
+          "type": "integer",
+          "min": 0,
+          "max": 10000000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:channel:UC_x5XG1OV2P6uZZ5FSM9Ttw:views",
+          "category": "counter-sensor",
+          "type": "integer",
+          "min": 0,
+          "max": 10000000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:channel:UC_x5XG1OV2P6uZZ5FSM9Ttw:videos",
+          "category": "counter-sensor",
+          "type": "integer",
+          "min": 0,
+          "max": 10000000000000,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:channel:UC_x5XG1OV2P6uZZ5FSM9Ttw:latest_video",
+          "category": "text",
+          "type": "text",
+          "min": 0,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:channel:UC_x5XG1OV2P6uZZ5FSM9Ttw:latest_published",
+          "category": "text",
+          "type": "text",
+          "min": 0,
+          "max": 0,
+          "read_only": true,
+          "has_feedback": false
+        }
+      ]
+    }
+  },
+  "manifest": {
+    "config_schema": [
+      {
+        "key": "intro",
+        "type": "section"
+      },
+      {
+        "key": "api_key",
+        "type": "secret"
+      },
+      {
+        "key": "feed_minutes",
+        "type": "number"
+      },
+      {
+        "key": "stats_minutes",
+        "type": "number"
+      },
+      {
+        "key": "daily_budget",
+        "type": "number"
+      },
+      {
+        "key": "language",
+        "type": "select"
+      }
+    ],
+    "actions": ["add_channel", "remove_channel", "list_channels", "test_api_key"],
+    "action_fields": {
+      "add_channel": ["channel"],
+      "remove_channel": ["channel"],
+      "list_channels": [],
+      "test_api_key": []
+    },
+    "widgets": [
+      {
+        "key": "latest_videos",
+        "settings": ["channels", "shorts"]
+      },
+      {
+        "key": "channel",
+        "settings": ["channel"]
+      },
+      {
+        "key": "quota",
+        "settings": []
+      }
+    ],
+    "scene_triggers": [
+      {
+        "key": "new_video",
+        "fields": [
+          {
+            "key": "channel",
+            "options": []
+          },
+          {
+            "key": "kind",
+            "options": ["video", "short"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "channel_name",
+            "type": "string"
+          },
+          {
+            "key": "title",
+            "type": "string"
+          },
+          {
+            "key": "url",
+            "type": "string"
+          },
+          {
+            "key": "video_id",
+            "type": "string"
+          },
+          {
+            "key": "kind",
+            "type": "string"
+          },
+          {
+            "key": "short",
+            "type": "boolean"
+          },
+          {
+            "key": "duration_seconds",
+            "type": "number"
+          },
+          {
+            "key": "duration",
+            "type": "string"
+          },
+          {
+            "key": "published_at",
+            "type": "string"
+          },
+          {
+            "key": "thumbnail",
+            "type": "string"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "live_started",
+        "fields": [
+          {
+            "key": "channel",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "channel_name",
+            "type": "string"
+          },
+          {
+            "key": "title",
+            "type": "string"
+          },
+          {
+            "key": "url",
+            "type": "string"
+          },
+          {
+            "key": "video_id",
+            "type": "string"
+          },
+          {
+            "key": "started_at",
+            "type": "string"
+          },
+          {
+            "key": "scheduled_at",
+            "type": "string"
+          },
+          {
+            "key": "thumbnail",
+            "type": "string"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "subscriber_milestone",
+        "fields": [
+          {
+            "key": "channel",
+            "options": []
+          }
+        ],
+        "variables": [
+          {
+            "key": "channel_name",
+            "type": "string"
+          },
+          {
+            "key": "milestone",
+            "type": "number"
+          },
+          {
+            "key": "subscribers",
+            "type": "number"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "api_key_refused",
+        "fields": [],
+        "variables": [
+          {
+            "key": "reason",
+            "type": "string"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "quota_exhausted",
+        "fields": [
+          {
+            "key": "source",
+            "options": ["budget", "google"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "source",
+            "type": "string"
+          },
+          {
+            "key": "used",
+            "type": "number"
+          },
+          {
+            "key": "budget",
+            "type": "number"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "scene_actions": [
+      {
+        "key": "latest_video",
+        "fields": ["channel", "include_shorts"],
+        "outputs": [
+          {
+            "key": "title",
+            "type": "string"
+          },
+          {
+            "key": "url",
+            "type": "string"
+          },
+          {
+            "key": "video_id",
+            "type": "string"
+          },
+          {
+            "key": "short",
+            "type": "boolean"
+          },
+          {
+            "key": "duration_seconds",
+            "type": "number"
+          },
+          {
+            "key": "published_at",
+            "type": "string"
+          },
+          {
+            "key": "live",
+            "type": "string"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "channel_stats",
+        "fields": ["channel"],
+        "outputs": [
+          {
+            "key": "subscribers",
+            "type": "number"
+          },
+          {
+            "key": "views",
+            "type": "number"
+          },
+          {
+            "key": "videos",
+            "type": "number"
+          },
+          {
+            "key": "summary",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

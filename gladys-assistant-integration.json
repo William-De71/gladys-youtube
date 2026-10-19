@@ -1,0 +1,1156 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "YouTube",
+  "description": {
+    "en": "Follow public YouTube channels: new videos, lives, subscribers, scenes and widgets.",
+    "fr": "Suivez des chaînes YouTube publiques : nouvelles vidéos, directs, abonnés, scènes, widgets.",
+    "de": "Öffentliche YouTube-Kanäle verfolgen: neue Videos, Livestreams, Abonnenten, Szenen, Widgets.",
+    "es": "Sigue canales públicos de YouTube: vídeos nuevos, directos, suscriptores, escenas y widgets."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-youtube:0.1.0",
+  "gladys_version": ">=5.1.0",
+  "categories": ["multimedia", "services"],
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-youtube/main/cover.jpg",
+  "transports": ["cloud"],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "YouTube",
+        "fr": "YouTube",
+        "de": "YouTube",
+        "es": "YouTube"
+      },
+      "description": {
+        "en": "How it works:\n1. In the Google Cloud console, create a project, enable “YouTube Data API v3” and create an API key (restrict it to that API). Paste it below.\n2. Add each channel with “Add a channel”: its @handle, its URL or its id.\n3. Open the Discover tab and add the channel: it becomes a device with its subscribers, views, videos and latest video.\n4. Add the widgets to a dashboard and use the scenes (new video, live started).\nNew videos are detected through the public RSS feeds (no quota); the statistics and video details use the free daily quota of the API (10,000 units, about 30 a day for 10 channels). Not affiliated with Google or YouTube.",
+        "fr": "Comment ça marche :\n1. Dans la console Google Cloud, créez un projet, activez « YouTube Data API v3 » et créez une clé d’API (restreinte à cette API). Collez-la ci-dessous.\n2. Ajoutez chaque chaîne avec « Ajouter une chaîne » : son @identifiant, son URL ou son id.\n3. Ouvrez l’onglet Découverte et ajoutez la chaîne : elle devient un appareil avec ses abonnés, ses vues, ses vidéos et sa dernière vidéo.\n4. Ajoutez les widgets à un tableau de bord et utilisez les scènes (nouvelle vidéo, direct commencé).\nLes nouvelles vidéos sont détectées par les flux RSS publics (sans quota) ; les statistiques et les détails des vidéos utilisent le quota quotidien gratuit de l’API (10 000 unités, environ 30 par jour pour 10 chaînes). Non affilié à Google ni à YouTube.",
+        "de": "So funktioniert es:\n1. Erstellen Sie in der Google Cloud Console ein Projekt, aktivieren Sie „YouTube Data API v3“ und erstellen Sie einen API-Schlüssel (auf diese API beschränkt). Fügen Sie ihn unten ein.\n2. Fügen Sie jeden Kanal mit „Kanal hinzufügen“ hinzu: sein @Handle, seine URL oder seine ID.\n3. Öffnen Sie den Reiter Entdecken und fügen Sie den Kanal hinzu: Er wird zu einem Gerät mit Abonnenten, Aufrufen, Videos und neuestem Video.\n4. Fügen Sie die Widgets einem Dashboard hinzu und nutzen Sie die Szenen (neues Video, Livestream gestartet).\nNeue Videos werden über die öffentlichen RSS-Feeds erkannt (ohne Kontingent); Statistiken und Videodetails nutzen das kostenlose Tageskontingent der API (10.000 Einheiten, etwa 30 pro Tag für 10 Kanäle). Nicht mit Google oder YouTube verbunden.",
+        "es": "Cómo funciona:\n1. En la consola de Google Cloud, crea un proyecto, activa «YouTube Data API v3» y crea una clave de API (restringida a esa API). Pégala abajo.\n2. Añade cada canal con «Añadir un canal»: su @identificador, su URL o su id.\n3. Abre la pestaña Descubrir y añade el canal: se convierte en un dispositivo con sus suscriptores, vistas, vídeos y último vídeo.\n4. Añade los widgets a un panel y usa las escenas (vídeo nuevo, directo iniciado).\nLos vídeos nuevos se detectan con los feeds RSS públicos (sin cuota); las estadísticas y los detalles de los vídeos usan la cuota diaria gratuita de la API (10.000 unidades, unas 30 al día para 10 canales). Sin afiliación con Google ni YouTube."
+      },
+      "links": [
+        {
+          "url": "https://console.cloud.google.com/apis/library/youtube.googleapis.com",
+          "label": {
+            "en": "Enable YouTube Data API v3",
+            "fr": "Activer YouTube Data API v3",
+            "de": "YouTube Data API v3 aktivieren",
+            "es": "Activar YouTube Data API v3"
+          }
+        },
+        {
+          "url": "https://console.cloud.google.com/apis/credentials",
+          "label": {
+            "en": "Google Cloud console: API keys",
+            "fr": "Console Google Cloud : clés d’API",
+            "de": "Google Cloud Console: API-Schlüssel",
+            "es": "Consola de Google Cloud: claves de API"
+          }
+        },
+        {
+          "url": "https://github.com/William-De71/gladys-youtube/blob/main/docs/fr.md",
+          "label": {
+            "en": "Documentation (French)",
+            "fr": "Documentation",
+            "de": "Dokumentation (Französisch)",
+            "es": "Documentación (francés)"
+          }
+        },
+        {
+          "url": "https://github.com/William-De71/gladys-youtube/blob/main/docs/en.md",
+          "label": {
+            "en": "Documentation",
+            "fr": "Documentation (anglais)",
+            "de": "Dokumentation (Englisch)",
+            "es": "Documentación (inglés)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "api_key",
+      "type": "secret",
+      "required": true,
+      "label": {
+        "en": "Google Cloud API key",
+        "fr": "Clé d’API Google Cloud",
+        "de": "Google-Cloud-API-Schlüssel",
+        "es": "Clave de API de Google Cloud"
+      },
+      "description": {
+        "en": "A key of a Google Cloud project with “YouTube Data API v3” enabled. Restrict it to that API; no billing account is needed.",
+        "fr": "Une clé d’un projet Google Cloud où « YouTube Data API v3 » est activée. Restreignez-la à cette API ; aucun compte de facturation n’est nécessaire.",
+        "de": "Ein Schlüssel eines Google-Cloud-Projekts mit aktivierter „YouTube Data API v3“. Beschränken Sie ihn auf diese API; ein Rechnungskonto ist nicht nötig.",
+        "es": "Una clave de un proyecto de Google Cloud con «YouTube Data API v3» activada. Restríngela a esa API; no hace falta cuenta de facturación."
+      },
+      "placeholder": {
+        "en": "AIza…",
+        "fr": "AIza…",
+        "de": "AIza…",
+        "es": "AIza…"
+      }
+    },
+    {
+      "key": "feed_minutes",
+      "type": "number",
+      "min": 5,
+      "max": 240,
+      "default": 15,
+      "label": {
+        "en": "New videos: check every (minutes)",
+        "fr": "Nouvelles vidéos : vérifier toutes les (minutes)",
+        "de": "Neue Videos: prüfen alle (Minuten)",
+        "es": "Vídeos nuevos: comprobar cada (minutos)"
+      },
+      "placeholder": {
+        "en": "15",
+        "fr": "15",
+        "de": "15",
+        "es": "15"
+      },
+      "description": {
+        "en": "How often the RSS feed of each channel is read (5 to 240). Free: no quota. YouTube refreshes its feeds about every 15 minutes.",
+        "fr": "La fréquence de lecture du flux RSS de chaque chaîne (5 à 240). Gratuit : sans quota. YouTube rafraîchit ses flux environ toutes les 15 minutes.",
+        "de": "Wie oft der RSS-Feed jedes Kanals gelesen wird (5 bis 240). Kostenlos: ohne Kontingent. YouTube aktualisiert seine Feeds etwa alle 15 Minuten.",
+        "es": "Con qué frecuencia se lee el feed RSS de cada canal (5 a 240). Gratis: sin cuota. YouTube actualiza sus feeds cada 15 minutos aproximadamente."
+      }
+    },
+    {
+      "key": "stats_minutes",
+      "type": "number",
+      "min": 15,
+      "max": 1440,
+      "default": 60,
+      "label": {
+        "en": "Statistics: read every (minutes)",
+        "fr": "Statistiques : lire toutes les (minutes)",
+        "de": "Statistiken: lesen alle (Minuten)",
+        "es": "Estadísticas: leer cada (minutos)"
+      },
+      "placeholder": {
+        "en": "60",
+        "fr": "60",
+        "de": "60",
+        "es": "60"
+      },
+      "description": {
+        "en": "Subscribers, views and videos of every channel (15 to 1,440): 1 unit per 50 channels at each reading.",
+        "fr": "Abonnés, vues et vidéos de toutes les chaînes (15 à 1 440) : 1 unité pour 50 chaînes à chaque lecture.",
+        "de": "Abonnenten, Aufrufe und Videos aller Kanäle (15 bis 1.440): 1 Einheit pro 50 Kanäle bei jedem Lesen.",
+        "es": "Suscriptores, vistas y vídeos de todos los canales (15 a 1.440): 1 unidad por cada 50 canales en cada lectura."
+      }
+    },
+    {
+      "key": "daily_budget",
+      "type": "number",
+      "min": 100,
+      "max": 1000000,
+      "default": 9000,
+      "label": {
+        "en": "Daily budget (units)",
+        "fr": "Budget quotidien (unités)",
+        "de": "Tagesbudget (Einheiten)",
+        "es": "Presupuesto diario (unidades)"
+      },
+      "placeholder": {
+        "en": "9000",
+        "fr": "9000",
+        "de": "9000",
+        "es": "9000"
+      },
+      "description": {
+        "en": "Units a day the integration may spend; Google gives 10,000 a day per Cloud project for free, reset at midnight Pacific Time. Once spent, the RSS feeds still detect new videos.",
+        "fr": "Unités par jour que l’intégration peut dépenser ; Google en donne 10 000 par jour et par projet Cloud gratuitement, remises à zéro à minuit heure du Pacifique. Une fois dépensées, les flux RSS détectent encore les nouvelles vidéos.",
+        "de": "Einheiten pro Tag, die die Integration verbrauchen darf; Google gibt kostenlos 10.000 pro Tag und Cloud-Projekt, zurückgesetzt um Mitternacht pazifischer Zeit. Danach erkennen die RSS-Feeds weiterhin neue Videos.",
+        "es": "Unidades al día que la integración puede gastar; Google da gratis 10.000 al día por proyecto Cloud, reiniciadas a la medianoche del Pacífico. Una vez gastadas, los feeds RSS siguen detectando vídeos nuevos."
+      }
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "default": "auto",
+      "label": {
+        "en": "Language of the texts",
+        "fr": "Langue des textes",
+        "de": "Sprache der Texte",
+        "es": "Idioma de los textos"
+      },
+      "description": {
+        "en": "Feature names, dates, scene summaries and messages of the buttons. Automatic: the language of your dashboard once a widget has been shown, guessed from the timezone of Gladys before that.",
+        "fr": "Noms des fonctionnalités, dates, résumés des scènes et messages des boutons. Automatique : la langue de votre tableau de bord dès qu’un widget a été affiché, devinée d’après le fuseau horaire de Gladys avant cela.",
+        "de": "Funktionsnamen, Daten, Szenen-Zusammenfassungen und Meldungen der Schaltflächen. Automatisch: die Sprache Ihres Dashboards, sobald ein Widget angezeigt wurde, vorher aus der Zeitzone von Gladys abgeleitet.",
+        "es": "Nombres de las funciones, fechas, resúmenes de escenas y mensajes de los botones. Automático: el idioma de tu panel en cuanto se haya mostrado un widget, deducido de la zona horaria de Gladys antes de eso."
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en": "Automatic",
+            "fr": "Automatique",
+            "de": "Automatisch",
+            "es": "Automático"
+          }
+        },
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "English",
+            "de": "English",
+            "es": "English"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "Français",
+            "fr": "Français",
+            "de": "Français",
+            "es": "Français"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "Deutsch",
+            "fr": "Deutsch",
+            "de": "Deutsch",
+            "es": "Deutsch"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Español",
+            "fr": "Español",
+            "de": "Español",
+            "es": "Español"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "key": "add_channel",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "Add a channel",
+        "fr": "Ajouter une chaîne",
+        "de": "Kanal hinzufügen",
+        "es": "Añadir un canal"
+      },
+      "description": {
+        "en": "A public channel to follow (1 or 2 units, plus 1 for its latest videos).",
+        "fr": "Une chaîne publique à suivre (1 ou 2 unités, plus 1 pour ses dernières vidéos).",
+        "de": "Ein öffentlicher Kanal zum Verfolgen (1 oder 2 Einheiten, plus 1 für seine neuesten Videos).",
+        "es": "Un canal público que seguir (1 o 2 unidades, más 1 para sus últimos vídeos)."
+      },
+      "fields": [
+        {
+          "key": "channel",
+          "type": "string",
+          "required": true,
+          "label": {
+            "en": "Channel",
+            "fr": "Chaîne",
+            "de": "Kanal",
+            "es": "Canal"
+          },
+          "placeholder": {
+            "en": "@GoogleDevelopers",
+            "fr": "@GoogleDevelopers",
+            "de": "@GoogleDevelopers",
+            "es": "@GoogleDevelopers"
+          },
+          "description": {
+            "en": "Its @handle, its URL (youtube.com/@…, /channel/UC…, /user/…), its id (UC…) or the URL of one of its videos.",
+            "fr": "Son @identifiant, son URL (youtube.com/@…, /channel/UC…, /user/…), son id (UC…) ou l’URL d’une de ses vidéos.",
+            "de": "Sein @Handle, seine URL (youtube.com/@…, /channel/UC…, /user/…), seine ID (UC…) oder die URL eines seiner Videos.",
+            "es": "Su @identificador, su URL (youtube.com/@…, /channel/UC…, /user/…), su id (UC…) o la URL de uno de sus vídeos."
+          }
+        }
+      ]
+    },
+    {
+      "key": "remove_channel",
+      "timeout_seconds": 15,
+      "label": {
+        "en": "Remove a channel",
+        "fr": "Retirer une chaîne",
+        "de": "Kanal entfernen",
+        "es": "Quitar un canal"
+      },
+      "description": {
+        "en": "Its device stays in Gladys until you delete it from the Devices tab.",
+        "fr": "Son appareil reste dans Gladys jusqu’à ce que vous le supprimiez depuis l’onglet Appareils.",
+        "de": "Sein Gerät bleibt in Gladys, bis Sie es im Reiter Geräte löschen.",
+        "es": "Su dispositivo sigue en Gladys hasta que lo elimines desde la pestaña Dispositivos."
+      },
+      "fields": [
+        {
+          "key": "channel",
+          "type": "string",
+          "required": true,
+          "label": {
+            "en": "Channel (name or number)",
+            "fr": "Chaîne (nom ou numéro)",
+            "de": "Kanal (Name oder Nummer)",
+            "es": "Canal (nombre o número)"
+          },
+          "placeholder": {
+            "en": "#1",
+            "fr": "#1",
+            "de": "#1",
+            "es": "#1"
+          },
+          "description": {
+            "en": "As shown by “List the channels”: the number such as #2, the name, the @handle or the id.",
+            "fr": "Comme affiché par « Lister les chaînes » : le numéro comme #2, le nom, l’@identifiant ou l’id.",
+            "de": "Wie von „Kanäle auflisten“ angezeigt: die Nummer wie #2, der Name, das @Handle oder die ID.",
+            "es": "Como lo muestra «Listar los canales»: el número como #2, el nombre, el @identificador o el id."
+          }
+        }
+      ]
+    },
+    {
+      "key": "list_channels",
+      "timeout_seconds": 10,
+      "label": {
+        "en": "List the channels",
+        "fr": "Lister les chaînes",
+        "de": "Kanäle auflisten",
+        "es": "Listar los canales"
+      },
+      "description": {
+        "en": "Every channel with its number, its subscribers, its latest video, its last check and its last error; the units of the day.",
+        "fr": "Chaque chaîne avec son numéro, ses abonnés, sa dernière vidéo, sa dernière vérification et sa dernière erreur ; les unités du jour.",
+        "de": "Jeder Kanal mit Nummer, Abonnenten, neuestem Video, letzter Prüfung und letztem Fehler; die Einheiten des Tages.",
+        "es": "Cada canal con su número, sus suscriptores, su último vídeo, su última comprobación y su último error; las unidades del día."
+      }
+    },
+    {
+      "key": "test_api_key",
+      "timeout_seconds": 20,
+      "label": {
+        "en": "Test the API key",
+        "fr": "Tester la clé d’API",
+        "de": "API-Schlüssel testen",
+        "es": "Probar la clave de API"
+      },
+      "description": {
+        "en": "Reads the official YouTube channel: 1 unit.",
+        "fr": "Lit la chaîne officielle YouTube : 1 unité.",
+        "de": "Liest den offiziellen YouTube-Kanal: 1 Einheit.",
+        "es": "Lee el canal oficial de YouTube: 1 unidad."
+      }
+    }
+  ],
+  "widgets": [
+    {
+      "key": "latest_videos",
+      "icon": "play-circle",
+      "label": {
+        "en": "Latest videos",
+        "fr": "Dernières vidéos",
+        "de": "Neueste Videos",
+        "es": "Últimos vídeos"
+      },
+      "description": {
+        "en": "The latest uploads of your channels with thumbnail, date, duration and live badge.",
+        "fr": "Les derniers envois de vos chaînes avec miniature, date, durée et badge de direct.",
+        "de": "Die neuesten Uploads Ihrer Kanäle mit Vorschaubild, Datum, Dauer und Live-Abzeichen.",
+        "es": "Las últimas subidas de tus canales con miniatura, fecha, duración y distintivo de directo."
+      },
+      "settings": [
+        {
+          "key": "channels",
+          "type": "multi_select",
+          "source": "devices",
+          "label": {
+            "en": "Channels",
+            "fr": "Chaînes",
+            "de": "Kanäle",
+            "es": "Canales"
+          },
+          "description": {
+            "en": "Empty: every channel.",
+            "fr": "Vide : toutes les chaînes.",
+            "de": "Leer: alle Kanäle.",
+            "es": "Vacío: todos los canales."
+          }
+        },
+        {
+          "key": "shorts",
+          "type": "boolean",
+          "default": true,
+          "label": {
+            "en": "Show the Shorts",
+            "fr": "Afficher les Shorts",
+            "de": "Shorts anzeigen",
+            "es": "Mostrar los Shorts"
+          }
+        }
+      ]
+    },
+    {
+      "key": "channel",
+      "icon": "tv",
+      "label": {
+        "en": "YouTube channel",
+        "fr": "Chaîne YouTube",
+        "de": "YouTube-Kanal",
+        "es": "Canal de YouTube"
+      },
+      "description": {
+        "en": "One channel: latest video, subscribers, views, videos and live state.",
+        "fr": "Une chaîne : dernière vidéo, abonnés, vues, vidéos et état du direct.",
+        "de": "Ein Kanal: neuestes Video, Abonnenten, Aufrufe, Videos und Live-Status.",
+        "es": "Un canal: último vídeo, suscriptores, vistas, vídeos y estado del directo."
+      },
+      "settings": [
+        {
+          "key": "channel",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Channel",
+            "fr": "Chaîne",
+            "de": "Kanal",
+            "es": "Canal"
+          },
+          "required": true,
+          "description": {
+            "en": "Among the channels added as devices.",
+            "fr": "Parmi les chaînes ajoutées comme appareils.",
+            "de": "Unter den als Geräte hinzugefügten Kanälen.",
+            "es": "Entre los canales añadidos como dispositivos."
+          }
+        }
+      ]
+    },
+    {
+      "key": "quota",
+      "icon": "bar-chart-2",
+      "label": {
+        "en": "YouTube quota",
+        "fr": "Quota YouTube",
+        "de": "YouTube-Kontingent",
+        "es": "Cuota de YouTube"
+      },
+      "description": {
+        "en": "Units of the day against the budget, next reset and state of the API key.",
+        "fr": "Unités du jour face au budget, prochaine remise à zéro et état de la clé d’API.",
+        "de": "Einheiten des Tages im Vergleich zum Budget, nächste Rücksetzung und Status des Schlüssels.",
+        "es": "Unidades del día frente al presupuesto, próximo reinicio y estado de la clave."
+      }
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "new_video",
+      "label": {
+        "en": "A channel publishes a video",
+        "fr": "Une chaîne publie une vidéo",
+        "de": "Ein Kanal veröffentlicht ein Video",
+        "es": "Un canal publica un vídeo"
+      },
+      "description": {
+        "en": "A new video or Short of a followed channel, within the check interval (lives excluded).",
+        "fr": "Une nouvelle vidéo ou un Short d’une chaîne suivie, dans l’intervalle de vérification (hors directs).",
+        "de": "Ein neues Video oder Short eines verfolgten Kanals, im Prüfintervall (ohne Livestreams).",
+        "es": "Un vídeo o Short nuevo de un canal seguido, dentro del intervalo de comprobación (sin directos)."
+      },
+      "fields": [
+        {
+          "key": "channel",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Channel",
+            "fr": "Chaîne",
+            "de": "Kanal",
+            "es": "Canal"
+          },
+          "description": {
+            "en": "Empty: every channel.",
+            "fr": "Vide : toutes les chaînes.",
+            "de": "Leer: alle Kanäle.",
+            "es": "Vacío: todos los canales."
+          }
+        },
+        {
+          "key": "kind",
+          "type": "select",
+          "label": {
+            "en": "Kind",
+            "fr": "Type",
+            "de": "Art",
+            "es": "Tipo"
+          },
+          "description": {
+            "en": "Empty: both.",
+            "fr": "Vide : les deux.",
+            "de": "Leer: beide.",
+            "es": "Vacío: ambos."
+          },
+          "options": [
+            {
+              "value": "video",
+              "label": {
+                "en": "Video",
+                "fr": "Vidéo",
+                "de": "Video",
+                "es": "Vídeo"
+              }
+            },
+            {
+              "value": "short",
+              "label": {
+                "en": "Short",
+                "fr": "Short",
+                "de": "Short",
+                "es": "Short"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "channel_name",
+          "type": "string",
+          "label": {
+            "en": "Channel name",
+            "fr": "Nom de la chaîne",
+            "de": "Kanalname",
+            "es": "Nombre del canal"
+          }
+        },
+        {
+          "key": "title",
+          "type": "string",
+          "label": {
+            "en": "Video title",
+            "fr": "Titre de la vidéo",
+            "de": "Videotitel",
+            "es": "Título del vídeo"
+          }
+        },
+        {
+          "key": "url",
+          "type": "string",
+          "label": {
+            "en": "Video URL",
+            "fr": "URL de la vidéo",
+            "de": "Video-URL",
+            "es": "URL del vídeo"
+          }
+        },
+        {
+          "key": "video_id",
+          "type": "string",
+          "label": {
+            "en": "Video id",
+            "fr": "Id de la vidéo",
+            "de": "Video-ID",
+            "es": "Id del vídeo"
+          }
+        },
+        {
+          "key": "kind",
+          "type": "string",
+          "label": {
+            "en": "Kind (video or short)",
+            "fr": "Type (video ou short)",
+            "de": "Art (video oder short)",
+            "es": "Tipo (video o short)"
+          }
+        },
+        {
+          "key": "short",
+          "type": "boolean",
+          "label": {
+            "en": "Is a Short",
+            "fr": "Est un Short",
+            "de": "Ist ein Short",
+            "es": "Es un Short"
+          }
+        },
+        {
+          "key": "duration_seconds",
+          "type": "number",
+          "label": {
+            "en": "Duration (s)",
+            "fr": "Durée (s)",
+            "de": "Dauer (s)",
+            "es": "Duración (s)"
+          }
+        },
+        {
+          "key": "duration",
+          "type": "string",
+          "label": {
+            "en": "Duration (h:mm:ss)",
+            "fr": "Durée (h:mm:ss)",
+            "de": "Dauer (h:mm:ss)",
+            "es": "Duración (h:mm:ss)"
+          }
+        },
+        {
+          "key": "published_at",
+          "type": "string",
+          "label": {
+            "en": "Publication date (ISO)",
+            "fr": "Date de publication (ISO)",
+            "de": "Veröffentlichungsdatum (ISO)",
+            "es": "Fecha de publicación (ISO)"
+          }
+        },
+        {
+          "key": "thumbnail",
+          "type": "string",
+          "label": {
+            "en": "Thumbnail URL",
+            "fr": "URL de la miniature",
+            "de": "Vorschaubild-URL",
+            "es": "URL de la miniatura"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary sentence",
+            "fr": "Phrase de résumé",
+            "de": "Zusammenfassung",
+            "es": "Frase de resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "live_started",
+      "label": {
+        "en": "A channel goes live",
+        "fr": "Une chaîne passe en direct",
+        "de": "Ein Kanal geht live",
+        "es": "Un canal empieza un directo"
+      },
+      "description": {
+        "en": "A live or a premiere of a followed channel starts (seen within about 5 minutes when scheduled).",
+        "fr": "Un direct ou une première d’une chaîne suivie commence (vu en 5 minutes environ s’il est programmé).",
+        "de": "Ein Livestream oder eine Premiere eines verfolgten Kanals beginnt (bei Planung in etwa 5 Minuten erkannt).",
+        "es": "Empieza un directo o un estreno de un canal seguido (detectado en unos 5 minutos si está programado)."
+      },
+      "fields": [
+        {
+          "key": "channel",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Channel",
+            "fr": "Chaîne",
+            "de": "Kanal",
+            "es": "Canal"
+          },
+          "description": {
+            "en": "Empty: every channel.",
+            "fr": "Vide : toutes les chaînes.",
+            "de": "Leer: alle Kanäle.",
+            "es": "Vacío: todos los canales."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "channel_name",
+          "type": "string",
+          "label": {
+            "en": "Channel name",
+            "fr": "Nom de la chaîne",
+            "de": "Kanalname",
+            "es": "Nombre del canal"
+          }
+        },
+        {
+          "key": "title",
+          "type": "string",
+          "label": {
+            "en": "Video title",
+            "fr": "Titre de la vidéo",
+            "de": "Videotitel",
+            "es": "Título del vídeo"
+          }
+        },
+        {
+          "key": "url",
+          "type": "string",
+          "label": {
+            "en": "Video URL",
+            "fr": "URL de la vidéo",
+            "de": "Video-URL",
+            "es": "URL del vídeo"
+          }
+        },
+        {
+          "key": "video_id",
+          "type": "string",
+          "label": {
+            "en": "Video id",
+            "fr": "Id de la vidéo",
+            "de": "Video-ID",
+            "es": "Id del vídeo"
+          }
+        },
+        {
+          "key": "started_at",
+          "type": "string",
+          "label": {
+            "en": "Start (ISO)",
+            "fr": "Début (ISO)",
+            "de": "Beginn (ISO)",
+            "es": "Inicio (ISO)"
+          }
+        },
+        {
+          "key": "scheduled_at",
+          "type": "string",
+          "label": {
+            "en": "Scheduled start (ISO)",
+            "fr": "Début prévu (ISO)",
+            "de": "Geplanter Beginn (ISO)",
+            "es": "Inicio previsto (ISO)"
+          }
+        },
+        {
+          "key": "thumbnail",
+          "type": "string",
+          "label": {
+            "en": "Thumbnail URL",
+            "fr": "URL de la miniature",
+            "de": "Vorschaubild-URL",
+            "es": "URL de la miniatura"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary sentence",
+            "fr": "Phrase de résumé",
+            "de": "Zusammenfassung",
+            "es": "Frase de resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "subscriber_milestone",
+      "label": {
+        "en": "A channel reaches a subscriber milestone",
+        "fr": "Une chaîne franchit un palier d’abonnés",
+        "de": "Ein Kanal erreicht eine Abonnentenmarke",
+        "es": "Un canal alcanza un hito de suscriptores"
+      },
+      "description": {
+        "en": "100, 200, 500, 1,000, 2,000, 5,000… once each: a dip below and back never fires again.",
+        "fr": "100, 200, 500, 1 000, 2 000, 5 000… une fois chacun : repasser en dessous puis au-dessus ne redéclenche pas.",
+        "de": "100, 200, 500, 1.000, 2.000, 5.000… je einmal: ein Rückgang und erneuter Anstieg löst nicht erneut aus.",
+        "es": "100, 200, 500, 1.000, 2.000, 5.000… una vez cada uno: bajar y volver a subir no vuelve a activarlo."
+      },
+      "fields": [
+        {
+          "key": "channel",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Channel",
+            "fr": "Chaîne",
+            "de": "Kanal",
+            "es": "Canal"
+          },
+          "description": {
+            "en": "Empty: every channel.",
+            "fr": "Vide : toutes les chaînes.",
+            "de": "Leer: alle Kanäle.",
+            "es": "Vacío: todos los canales."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "channel_name",
+          "type": "string",
+          "label": {
+            "en": "Channel name",
+            "fr": "Nom de la chaîne",
+            "de": "Kanalname",
+            "es": "Nombre del canal"
+          }
+        },
+        {
+          "key": "milestone",
+          "type": "number",
+          "label": {
+            "en": "Milestone reached",
+            "fr": "Palier atteint",
+            "de": "Erreichte Marke",
+            "es": "Hito alcanzado"
+          }
+        },
+        {
+          "key": "subscribers",
+          "type": "number",
+          "label": {
+            "en": "Subscribers",
+            "fr": "Abonnés",
+            "de": "Abonnenten",
+            "es": "Suscriptores"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary sentence",
+            "fr": "Phrase de résumé",
+            "de": "Zusammenfassung",
+            "es": "Frase de resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "api_key_refused",
+      "label": {
+        "en": "Google refuses the API key",
+        "fr": "Google refuse la clé d’API",
+        "de": "Google lehnt den API-Schlüssel ab",
+        "es": "Google rechaza la clave de API"
+      },
+      "description": {
+        "en": "Invalid key, API not enabled, restricted key: once, until a request succeeds again.",
+        "fr": "Clé invalide, API non activée, clé restreinte : une fois, jusqu’à ce qu’une requête réussisse à nouveau.",
+        "de": "Ungültiger Schlüssel, API nicht aktiviert, eingeschränkter Schlüssel: einmal, bis eine Anfrage wieder gelingt.",
+        "es": "Clave no válida, API no activada, clave restringida: una vez, hasta que una solicitud vuelva a funcionar."
+      },
+      "variables": [
+        {
+          "key": "reason",
+          "type": "string",
+          "label": {
+            "en": "Reason given by Google",
+            "fr": "Raison donnée par Google",
+            "de": "Von Google genannter Grund",
+            "es": "Motivo indicado por Google"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary sentence",
+            "fr": "Phrase de résumé",
+            "de": "Zusammenfassung",
+            "es": "Frase de resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "quota_exhausted",
+      "label": {
+        "en": "The daily quota is spent",
+        "fr": "Le quota du jour est épuisé",
+        "de": "Das Tageskontingent ist erschöpft",
+        "es": "La cuota del día se ha agotado"
+      },
+      "description": {
+        "en": "The daily budget of the integration is spent, or Google refuses the quota: once a day.",
+        "fr": "Le budget quotidien de l’intégration est dépensé, ou Google refuse le quota : une fois par jour.",
+        "de": "Das Tagesbudget der Integration ist verbraucht oder Google lehnt das Kontingent ab: einmal pro Tag.",
+        "es": "Se ha gastado el presupuesto diario de la integración o Google rechaza la cuota: una vez al día."
+      },
+      "fields": [
+        {
+          "key": "source",
+          "type": "select",
+          "label": {
+            "en": "Source",
+            "fr": "Origine",
+            "de": "Quelle",
+            "es": "Origen"
+          },
+          "description": {
+            "en": "Empty: both.",
+            "fr": "Vide : les deux.",
+            "de": "Leer: beide.",
+            "es": "Vacío: ambos."
+          },
+          "options": [
+            {
+              "value": "budget",
+              "label": {
+                "en": "Budget of the integration",
+                "fr": "Budget de l’intégration",
+                "de": "Budget der Integration",
+                "es": "Presupuesto de la integración"
+              }
+            },
+            {
+              "value": "google",
+              "label": {
+                "en": "Refused by Google",
+                "fr": "Refusé par Google",
+                "de": "Von Google abgelehnt",
+                "es": "Rechazada por Google"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "source",
+          "type": "string",
+          "label": {
+            "en": "Source (budget or google)",
+            "fr": "Origine (budget ou google)",
+            "de": "Quelle (budget oder google)",
+            "es": "Origen (budget o google)"
+          }
+        },
+        {
+          "key": "used",
+          "type": "number",
+          "label": {
+            "en": "Units used today",
+            "fr": "Unités utilisées aujourd’hui",
+            "de": "Heute verbrauchte Einheiten",
+            "es": "Unidades usadas hoy"
+          }
+        },
+        {
+          "key": "budget",
+          "type": "number",
+          "label": {
+            "en": "Daily budget",
+            "fr": "Budget quotidien",
+            "de": "Tagesbudget",
+            "es": "Presupuesto diario"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary sentence",
+            "fr": "Phrase de résumé",
+            "de": "Zusammenfassung",
+            "es": "Frase de resumen"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "latest_video",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "Get the latest video of a channel",
+        "fr": "Obtenir la dernière vidéo d’une chaîne",
+        "de": "Neuestes Video eines Kanals abrufen",
+        "es": "Obtener el último vídeo de un canal"
+      },
+      "description": {
+        "en": "Checks the RSS feed of the channel now (free) and returns its latest upload.",
+        "fr": "Vérifie maintenant le flux RSS de la chaîne (gratuit) et renvoie son dernier envoi.",
+        "de": "Prüft jetzt den RSS-Feed des Kanals (kostenlos) und liefert seinen neuesten Upload.",
+        "es": "Comprueba ahora el feed RSS del canal (gratis) y devuelve su última subida."
+      },
+      "fields": [
+        {
+          "key": "channel",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Channel",
+            "fr": "Chaîne",
+            "de": "Kanal",
+            "es": "Canal"
+          },
+          "required": true
+        },
+        {
+          "key": "include_shorts",
+          "type": "boolean",
+          "default": true,
+          "label": {
+            "en": "Include the Shorts",
+            "fr": "Inclure les Shorts",
+            "de": "Shorts einbeziehen",
+            "es": "Incluir los Shorts"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "title",
+          "type": "string",
+          "label": {
+            "en": "Video title",
+            "fr": "Titre de la vidéo",
+            "de": "Videotitel",
+            "es": "Título del vídeo"
+          }
+        },
+        {
+          "key": "url",
+          "type": "string",
+          "label": {
+            "en": "Video URL",
+            "fr": "URL de la vidéo",
+            "de": "Video-URL",
+            "es": "URL del vídeo"
+          }
+        },
+        {
+          "key": "video_id",
+          "type": "string",
+          "label": {
+            "en": "Video id",
+            "fr": "Id de la vidéo",
+            "de": "Video-ID",
+            "es": "Id del vídeo"
+          }
+        },
+        {
+          "key": "short",
+          "type": "boolean",
+          "label": {
+            "en": "Is a Short",
+            "fr": "Est un Short",
+            "de": "Ist ein Short",
+            "es": "Es un Short"
+          }
+        },
+        {
+          "key": "duration_seconds",
+          "type": "number",
+          "label": {
+            "en": "Duration (s)",
+            "fr": "Durée (s)",
+            "de": "Dauer (s)",
+            "es": "Duración (s)"
+          }
+        },
+        {
+          "key": "published_at",
+          "type": "string",
+          "label": {
+            "en": "Publication date (ISO)",
+            "fr": "Date de publication (ISO)",
+            "de": "Veröffentlichungsdatum (ISO)",
+            "es": "Fecha de publicación (ISO)"
+          }
+        },
+        {
+          "key": "live",
+          "type": "string",
+          "label": {
+            "en": "Live state (none or live)",
+            "fr": "État du direct (none ou live)",
+            "de": "Live-Status (none oder live)",
+            "es": "Estado del directo (none o live)"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary sentence",
+            "fr": "Phrase de résumé",
+            "de": "Zusammenfassung",
+            "es": "Frase de resumen"
+          }
+        }
+      ]
+    },
+    {
+      "key": "channel_stats",
+      "timeout_seconds": 20,
+      "label": {
+        "en": "Get the statistics of a channel",
+        "fr": "Obtenir les statistiques d’une chaîne",
+        "de": "Statistiken eines Kanals abrufen",
+        "es": "Obtener las estadísticas de un canal"
+      },
+      "description": {
+        "en": "The last statistics read (no request, unless none was read yet).",
+        "fr": "Les dernières statistiques lues (sans requête, sauf si aucune n’a encore été lue).",
+        "de": "Die zuletzt gelesenen Statistiken (ohne Anfrage, außer es wurde noch keine gelesen).",
+        "es": "Las últimas estadísticas leídas (sin solicitud, salvo si aún no se ha leído ninguna)."
+      },
+      "fields": [
+        {
+          "key": "channel",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Channel",
+            "fr": "Chaîne",
+            "de": "Kanal",
+            "es": "Canal"
+          },
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "key": "subscribers",
+          "type": "number",
+          "label": {
+            "en": "Subscribers (-1: hidden)",
+            "fr": "Abonnés (-1 : masqués)",
+            "de": "Abonnenten (-1: verborgen)",
+            "es": "Suscriptores (-1: ocultos)"
+          }
+        },
+        {
+          "key": "views",
+          "type": "number",
+          "label": {
+            "en": "Total views",
+            "fr": "Vues totales",
+            "de": "Aufrufe gesamt",
+            "es": "Vistas totales"
+          }
+        },
+        {
+          "key": "videos",
+          "type": "number",
+          "label": {
+            "en": "Videos",
+            "fr": "Vidéos",
+            "de": "Videos",
+            "es": "Vídeos"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary sentence",
+            "fr": "Phrase de résumé",
+            "de": "Zusammenfassung",
+            "es": "Frase de resumen"
+          }
+        }
+      ]
+    }
+  ]
+}

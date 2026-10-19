@@ -1,0 +1,12 @@
+Gladys YouTube integration
+Copyright 2026 William Deren
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It calls the YouTube Data API v3 with the API key of the user, who accepts the
+YouTube API Services Terms of Service, and reads the public RSS feeds and
+thumbnails of YouTube. YouTube is a trademark of Google LLC; this integration
+is not affiliated with, endorsed by nor sponsored by Google or YouTube.
+The features follow the Home Assistant "YouTube" integration (Apache-2.0) and
+its youtubeaio library (MIT): the Shorts check (HEAD /shorts/<id>) is the same
+idea; no code is taken from them.

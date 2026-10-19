@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="534" viewBox="0 0 800 534">
+  <!-- Cover of the YouTube integration for Gladys Assistant (illustration).
+       No YouTube logo: a generic play pictogram in the blue of Gladys, and
+       the mention "not affiliated". Built into cover.jpg by
+       scripts/build-cover.sh. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef3fa"/>
+      <stop offset="1" stop-color="#e2e9f4"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a5ea8"/>
+      <stop offset="1" stop-color="#1d3f73"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f5f7fb"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="534" fill="url(#bg)"/>
+
+  <!-- a row of video thumbnails in the background -->
+  <g opacity="0.55">
+    <rect x="40" y="40" width="160" height="90" rx="12" fill="#c9d6e8"/>
+    <rect x="220" y="40" width="160" height="90" rx="12" fill="#d3deec"/>
+    <rect x="420" y="40" width="160" height="90" rx="12" fill="#c9d6e8"/>
+    <rect x="600" y="40" width="160" height="90" rx="12" fill="#d3deec"/>
+    <rect x="40" y="470" width="160" height="50" rx="12" fill="#d3deec"/>
+    <rect x="600" y="470" width="160" height="50" rx="12" fill="#c9d6e8"/>
+  </g>
+
+  <!-- the screen with a generic play pictogram -->
+  <g transform="translate(150 125)">
+    <rect width="300" height="190" rx="24" fill="url(#screen)"/>
+    <circle cx="150" cy="95" r="52" fill="#ffffff" opacity="0.18"/>
+    <path d="M130 64 L 186 95 L 130 126 Z" fill="#ffffff"/>
+    <rect x="24" y="166" width="252" height="6" rx="3" fill="#ffffff" opacity="0.3"/>
+    <rect x="24" y="166" width="150" height="6" rx="3" fill="#7fb0f0"/>
+    <rect x="120" y="200" width="60" height="10" rx="5" fill="#1d3f73"/>
+    <rect x="90" y="210" width="120" height="10" rx="5" fill="#1d3f73"/>
+  </g>
+
+  <!-- a card: subscribers and a new video -->
+  <g transform="translate(480 145)">
+    <rect width="270" height="170" rx="20" fill="url(#card)" stroke="#d6dde6" stroke-width="2"/>
+    <circle cx="44" cy="36" r="12" fill="none" stroke="#2a5ea8" stroke-width="5"/>
+    <path d="M24 76 C 24 54, 64 54, 64 76" fill="none" stroke="#2a5ea8" stroke-width="5"/>
+    <text x="80" y="58" font-family="DejaVu Sans, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2d3d">2.49M</text>
+    <rect x="24" y="100" width="222" height="48" rx="12" fill="#e8f0fb"/>
+    <rect x="34" y="110" width="50" height="28" rx="6" fill="#2a5ea8"/>
+    <path d="M53 117 L 66 124 L 53 131 Z" fill="#ffffff"/>
+    <rect x="94" y="114" width="120" height="8" rx="4" fill="#9aa7b8"/>
+    <rect x="94" y="128" width="80" height="8" rx="4" fill="#c4cdd8"/>
+    <circle cx="232" cy="28" r="9" fill="#2f9e5a"/>
+  </g>
+
+  <!-- title -->
+  <text x="400" y="410" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="40" font-weight="700" fill="#1f2d3d">YouTube for Gladys Assistant</text>
+  <text x="400" y="446" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" fill="#4b5a6b">Channels, new videos, lives — not affiliated with Google or YouTube</text>
+</svg>
