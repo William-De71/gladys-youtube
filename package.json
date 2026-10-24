@@ -1,6 +1,6 @@
 {
   "name": "gladys-youtube",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "External Gladys Assistant integration for public YouTube channels through the YouTube Data API v3 and the RSS feeds: one device per channel, new video and live scene triggers, scene actions, dashboard widgets.",
   "homepage": "https://github.com/William-De71/gladys-youtube",
