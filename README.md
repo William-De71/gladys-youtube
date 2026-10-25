@@ -5,7 +5,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Latest release](https://img.shields.io/github/v/release/William-De71/gladys-youtube?sort=semver)](https://github.com/William-De71/gladys-youtube/releases)
 [![CI](https://img.shields.io/github/actions/workflow/status/William-De71/gladys-youtube/release.yml?branch=main&label=CI)](https://github.com/William-De71/gladys-youtube/actions/workflows/release.yml)
-[![Gladys](https://img.shields.io/badge/Gladys-%E2%89%A5%205.1.0-2f6fb5)](https://gladysassistant.com)
+[![Gladys](https://img.shields.io/badge/Gladys-%E2%89%A5%205.3.0-2f6fb5)](https://gladysassistant.com)
 
 ![YouTube for Gladys Assistant](cover.jpg)
 
@@ -100,7 +100,7 @@ Examples:
 
 ## Requirements
 
-- Gladys Assistant **5.1.0** or later (widgets and scenes of integrations): older instances cannot install the integration.
+- Gladys Assistant **5.3.0** or later (widgets and scenes of integrations; catalog keywords and countries of Gladys 5.3): older instances cannot install the integration.
 - A **Google Cloud API key** with **YouTube Data API v3** enabled. No billing account is needed: the API is free within its daily quota.
 
 ### Cost

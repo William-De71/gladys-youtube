@@ -10,8 +10,20 @@
   },
   "version": "0.1.1",
   "docker_image": "ghcr.io/william-de71/gladys-youtube:0.1.1",
-  "gladys_version": ">=5.1.0",
+  "gladys_version": ">=5.3.0",
   "categories": ["multimedia", "services"],
+  "keywords": [
+    "Google",
+    "chaîne",
+    "channel",
+    "vidéo",
+    "video",
+    "live",
+    "direct",
+    "abonnés",
+    "subscribers",
+    "youtubeur"
+  ],
   "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-youtube/main/cover.jpg",
   "transports": ["cloud"],
   "config_schema": [

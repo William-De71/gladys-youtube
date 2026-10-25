@@ -14,7 +14,7 @@ The image above is a generated illustration with made-up channels, not a screens
 
 ## Prerequisites
 
-- Gladys Assistant 5.1.0 or later.
+- Gladys Assistant 5.3.0 or later.
 - A Google account and a **Google Cloud API key** with **YouTube Data API v3** enabled:
   1. Open the [Google Cloud console](https://console.cloud.google.com/) and create a project (for example "Gladys YouTube").
   2. In APIs & Services → Library, search for **YouTube Data API v3** and press **Enable**.
